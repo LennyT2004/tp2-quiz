@@ -1,0 +1,492 @@
+/* Normalisation supplémentaire 
+============================================================================= */
+/* Notez l'utilisation des sélecteurs additionnels pour les pseudo-éléments */
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select:none;
+
+    cursor: none;
+}
+
+/* Mise en page
+============================================================*/
+html {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    /* Ajustement de la taille des polices à la racine du document */
+    font-size: clamp(10px, 0.5rem + 0.5vw, 24px);
+    font-family: 'Bangers', cursive;
+}
+
+body {
+    max-width: 100%;
+    height: 100%;  
+    color: black;
+    overflow: hidden;
+
+    /* Fond gradient animé */
+    background: linear-gradient(300deg,#86e5ff,#5bc0f8,#0081c9);
+    background-size: 180% 180%;
+    animation: gradient-animation 15s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+}
+
+.vague {
+    background: rgb(255 255 255 / 25%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: mvm-vague 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.vague:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: mvm-vague 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.vague:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: mvm-vague 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes mvm-vague {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+
+    /*Conteneur flex en rangée pour l'intro...*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    min-height: 15vh;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid white;
+    font-size: 3rem;
+
+    /*Conteneur flex en rangée*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /*Ne peut rétrécir comme item flex*/
+    flex: 0 0 auto;
+}
+
+footer {
+    min-height: 10vh;
+    width: 100vw;
+    text-align: center;
+
+    /*Position fixe*/
+    position: fixed;
+    bottom: 0;
+
+    /*Conteneur flex en rangée*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /*Ne peut rétrécir comme item flex*/
+    flex: 0 0 auto;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+section {
+    width: 100vw;
+    height: 85vh;
+
+    font-size: 2rem;
+    text-align: center;
+
+    /*Conteneur flex colonne*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* -------------------- Style des sections -------------------- */
+/* ---------- Intro ---------- */
+/* Style de base de la zone d'intro */
+main.intro {
+    display: flex;
+    flex-direction: column;
+}
+/* Titre intro */
+.anim-titre-intro {
+    font-size: 5rem;
+    text-align: center;
+    padding: 1rem;
+    animation: apparition-titre-intro 1s ease-in-out;
+}
+/* Animation apparition titre intro */
+@keyframes apparition-titre-intro {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+/* Animation apparition des instructions */
+.apparition-instructions {
+    animation: apparition-instructions 1s ease-in-out;
+}
+@keyframes apparition-instructions {
+    from {
+        clip-path: circle(0.0% at 50% 50%);
+    }
+    to {
+        clip-path: circle(70.7% at 50% 50%);
+    }
+}
+/* Animation disparition de l'intro */
+.disparition-titre-intro-anim {
+    animation: disparition-titre-intro 2s ease-in-out;
+}
+@keyframes disparition-titre-intro {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(45deg) scale(1.5);
+    }
+    80%, to {
+        transform: rotate(-1080deg) scale(0);
+    }
+}
+.disparition-consignes-intro-anim {
+    animation: disparition-consignes-intro 2s ease-in-out;
+}
+@keyframes disparition-consignes-intro {
+    from {
+        transform: translateY(10px);
+        opacity: 1;
+    }
+    20% {
+        transform: translateY(-10px);
+    }
+    30% {
+        transform: translateY(7.5px);
+    }
+    40% {
+        transform: translateY(-7.5px);
+    }
+    50%, 60%, 70%, 80% {
+        transform: translateY(5px);
+    }
+    55%, 65%, 75%, 85% {
+        transform: translateY(-5px);
+    }
+    90%, to {
+        transform: translateY(0px);
+        opacity: 0;
+    }
+}
+
+/* ---------- Quiz ---------- */
+main.quiz {
+    flex-direction: column;
+    justify-content: center;
+}
+main.quiz section {
+    font-family: 'Lato', sans-serif;
+}
+div.choix {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid black;
+    border-radius: 30px;
+    min-width: 80vw;
+    z-index: 1;
+    margin: 2rem;
+
+    transition: box-shadow 0.5s;
+}
+/* Changement de la couleur du texte et ajout d'un box-shadow en survolant un choix */
+div.choix:hover {
+    color: white;
+    box-shadow: 2px 2px 10px 1px black;
+}
+/* Boîte apparaissant avec un survol du choix */
+div.choix::before {
+    content: "";
+    position: absolute;
+    width: 80rem;
+    height: 4rem;
+    top: 0;
+    z-index: -1;
+    transform: translateX(-135%);
+    transition: transform 1s;
+    background-color: yellowgreen;
+}
+div.choix:hover::before {
+    transform: translateX(-30%);
+}
+
+/* Désactivation du pointer-events du pointer-events */
+main.quiz section .choix-de-reponse.desactiver {
+    pointer-events: none;
+}
+
+/* Animation des choix */
+/* Bonne réponse */
+@keyframes animer-bonne-reponse {
+    from {
+        transform: translateY(10px);
+    }
+    20% {
+        transform: translateY(-10px);
+    }
+    30% {
+        transform: translateY(7.5px);
+    }
+    40% {
+        transform: translateY(-7.5px);
+    }
+    50%, 60%, 70%, 80% {
+        transform: translateY(5px);
+    }
+    55%, 65%, 75%, 85% {
+        transform: translateY(-5px);
+    }
+    90%, to {
+        transform: translateY(0px);
+    }
+}
+div.choix.bonne-reponse {
+    background-color: green;
+    color: white;
+    box-shadow: 2px 2px 10px 1px green;
+    animation: animer-bonne-reponse 2s;
+}
+div.choix.bonne-reponse::before {
+    content: "";
+    position: absolute;
+    width: 80rem;
+    height: 4rem;
+    top: 0;
+    z-index: -1;
+    transform: translateX(-135%);
+    transition: transform 0.6s;
+    background-color: green;
+}
+
+/* Mauvaise réponse */
+@keyframes animer-mauvaise-reponse {
+    from {
+        transform: rotate(10deg);
+    }
+    20% {
+        transform: rotate(-10deg);
+    }
+    30% {
+        transform: rotate(7.5deg);
+    }
+    40% {
+        transform: rotate(-7.5deg);
+    }
+    50%, 60%, 70%, 80% {
+        transform: rotate(5deg);
+    }
+    55%, 65%, 75%, 85% {
+        transform: rotate(-5deg);
+    }
+    90%, to {
+        transform: rotate(0deg);
+    }
+}
+div.choix.mauvaise-reponse {
+    background-color: red;
+    color: white;
+    box-shadow: 2px 2px 10px 1px red;
+    animation: animer-mauvaise-reponse 2s;
+}
+div.choix.mauvaise-reponse::before {
+    content: "";
+    position: absolute;
+    width: 80rem;
+    height: 4rem;
+    top: 0;
+    z-index: -1;
+    transform: translateX(-135%);
+    transition: transform 0.6s;
+    background-color: red;
+}
+
+.disparition-question-anim {
+    animation: disparition-question 2s ease-in-out;
+}
+@keyframes disparition-question {
+    from {
+        transform: scale(1);
+    }
+    66% {
+        transform: scale(1.5);
+    }
+    to {
+        transform: scale(0);
+    }
+}
+
+/* ---------- Fin ---------- */
+main.fin {
+    display: flex;
+    flex-direction: column;
+    display: none;
+}
+main.fin .btn-recommencer {
+    opacity: 0;
+    font-size: 3rem;
+    transition: opacity 1s;
+    animation: apparition-btn-recommencer 1s;
+}
+.apparition-btn-recommencer-anim {
+    animation: apparition-btn-recommencer 1s;
+}
+@keyframes apparition-btn-recommencer {
+    from {
+        transform: scale(2) rotate(0turn);
+    }
+    to {
+        transform: scale(1) rotate(3turn);
+    }
+}
+main.fin .resultat {
+    animation: apparition-resultat 1s ease-in-out;
+}
+/* Apparition du résultat à la fin */
+@keyframes apparition-resultat {
+    from {
+        transform: scale(2);
+    }
+    40% {
+        transform: scale(1.5);
+    }
+    80% {
+        transform: scale(1.25);
+    }
+    95% {
+        transform: scale(1.125);
+    }
+    20%, 60%, 90%, to {
+        transform: scale(1);
+    }
+}
+
+/* -------------------- Curseur personalisé -------------------- */
+:root {
+    --mouse-x: 0px;
+    --mouse-y: 0px;
+}
+
+/* Curseur général de la page */
+.curseur {
+    position: fixed;
+    z-index: 1000;
+    width: 28px;
+    height: 28px;
+    border: 2px solid black;
+    border-radius: 50%;
+    top: calc(var(--mouse-y) - 1rem);
+    left: calc(var(--mouse-x) - 1rem);
+    pointer-events: none;
+    will-change: top, left;
+    transition: width 0.25s, height 0.25s;
+}
+
+.curseur::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    border: 10px solid black;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+
+    transition: border 0.1s ease-in-out;
+}
+
+.curseur.clic::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    border: 5px solid black;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.curseur.c-survole {
+    background-color: rgba(126, 0, 0, 0.5);
+    box-shadow: 0 0 20px 5px rgb(126, 0, 0);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+/* -------------------- Requête média -------------------- */
+@media screen and (min-width:768px) {
+    div.choix::before {
+        width: 150rem;
+        transform: translateX(-150%);
+
+    }
+    div.choix:hover::before {
+        transform: translateX(-40%);
+    }
+}

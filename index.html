@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>TP2 - Quiz One Piece</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="medias/icone-crane.png" sizes="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Intégration de la police d'icônes Material Icons de Google -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Intégration des polices d"écriture de Google -->
+    <!-- 'Bangers' pour les grands titres -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=League+Spartan:wght@600&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <!-- 'Lato' pour les textes de questions et choix -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Lato&family=League+Spartan:wght@600&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Intégration styles CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Curseur personalisé -->
+    <div class="curseur"></div>
+    <!-- Vagues fond animé -->
+    <div>
+        <div class="vague"></div>
+        <div class="vague"></div>
+        <div class="vague"></div>
+    </div>
+    <!-- Intro -->
+    <main class="intro">
+        <!-- Animation du titre de l'intro -->
+        <div class="anim-titre-intro">Connaissances générales : One&nbsp;Piece</div>
+        <footer></footer>
+    </main>
+
+    <main class="quiz">
+        <!-- Entête avec titre et barre de progression -->
+        <header>TP2 - 2W2 - TIM 2023</header>
+
+        <!-- Questions et choix de réponse -->
+        <section>
+            <div class="titre-question"></div>
+            <div class="choix-de-reponse"></div>
+        </section>
+    </main>
+
+    <!-- Fin -->
+    <main class="fin">
+        <span class="material-icons btn-recommencer">replay</span>
+    </main>
+    <!-- Chargement des scripts js -->
+    <script src="js/listeQuestions.js"></script>
+    <script src="js/index.js"></script>
+    
+</body>
+</html>
