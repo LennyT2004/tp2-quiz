@@ -249,7 +249,7 @@ div.choix {
     border-radius: 30px;
     min-width: 80vw;
     z-index: 1;
-    margin: 2rem;
+    margin: 5rem;
 
     transition: box-shadow 0.5s;
 }
@@ -481,6 +481,9 @@ main.fin .resultat {
 
 /* -------------------- Requête média -------------------- */
 @media screen and (min-width:768px) {
+    div.choix {
+    margin: 3.5rem;
+}
     div.choix::before {
         width: 150rem;
         transform: translateX(-150%);
@@ -489,4 +492,10 @@ main.fin .resultat {
     div.choix:hover::before {
         transform: translateX(-40%);
     }
+}
+
+@media screen and (min-width:992px) {
+    div.choix {
+    margin: 2rem;
+}
 }
