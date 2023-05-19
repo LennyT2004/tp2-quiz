@@ -495,7 +495,7 @@ main.fin .resultat {
 }
 
 @media screen and (min-width:992px) {
-    div.choix {
-    margin: 2rem;
-}
+        div.choix {
+        margin: 2rem;
+    }
 }

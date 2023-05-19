@@ -252,9 +252,14 @@ function recommencer() {
 let curseur = document.querySelector(".curseur");
 //Saisie de la racine
 let racine = document.querySelector(":root");
-//Ajout de l'écouteur de mouvement de la souris sur l'objet window
-//qui appelera la fonction gérant le déplacement du curseur personalisé
-window.addEventListener('mousemove', bougerCurseur);
+
+if (matchMedia('(pointer:fine)').matches) {
+    //Ajout de l'écouteur de mouvement de la souris sur l'objet window
+    //qui appelera la fonction gérant le déplacement du curseur personalisé
+    window.addEventListener('mousemove', bougerCurseur);
+} else {
+    curseur.style.display = "none";
+}
 
 //Fonction gérant le déplacement du curseur personalisé
 function bougerCurseur(event) {
