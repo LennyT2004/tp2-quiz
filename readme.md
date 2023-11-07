@@ -2,4 +2,4 @@
 
 <p>https://github.com/RoronoaEnnyl/tp2-quiz</p>
 
-<p>https://roronoaennyl.github.io/tp2-quiz/</p>
+<p>https://lennyt2004.github.io/tp2-quiz/</p>
